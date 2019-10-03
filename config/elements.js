@@ -1,4 +1,4 @@
-export const ele = {
+const ele = {
   name: 'input[name="name"]',
   email: "#registermemail",
   countryCode: 'input[name="code"]',
@@ -11,3 +11,5 @@ export const ele = {
   terms: 'input[name="terms"]',
   registerButton: ".btn.selected.btn-block.rounded-0"
 };
+
+module.exports = ele;
