@@ -12,7 +12,7 @@ const ele = {
   registerButton: ".btn.selected.btn-block.rounded-0"
 };
 
-describe("ss:", function() {
+xdescribe("ss:", function() {
   it("Register", function() {
     var register = ".btn.selected.btn-block.rounded-0";
     element(By.css(register)).click();
