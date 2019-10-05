@@ -1,8 +1,9 @@
 # ss-e2e
+
 ss - end to end testing
 
-Setup
-------
+## Setup
+
 Use npm to install Protractor globally with:
 
 `npm install -g protractor`
@@ -18,11 +19,14 @@ Now start up a server with:
 
 This will start up a Selenium Server and will output a bunch of info logs
 
-Jasmine Version
------------------
+## Jasmine Version
+
 `npm view jasmine version`
 
+## Json Package init:
 
-Json Package init:
-------------------
 `npm init -y`
+
+## To Run Protractor
+
+`protractor .\config.js`
