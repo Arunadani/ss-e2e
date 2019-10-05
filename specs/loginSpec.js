@@ -3,18 +3,26 @@
 browser.ignoreSynchronization = true;
 
 describe("ss:", function() {
+  /* Forgot password*/
+  var forgotPssWd = ".card a";
+  var forgotMail = "#forgotpassword";
+  var sendButton = ".modal-footer button";
+  var alertDialog;
+  var toastContainer = "#toast-container";
+  //.toast-error, .toast-warning, .toast-success
+
   it("to check the login title", function() {
     browser.get("http://sociosource.com");
     browser
       .manage()
       .timeouts()
-      .implicitlyWait(10000);
+      .implicitlyWait(1000);
 
     /* browser.driver.getTitle().then(function(pageTitle) {
           expect(pageTitle).toEqual('Free Online Tutorials and Courses');
        });*/
   });
-  xit("Get Started:", function() {
+  it("Get Started:", function() {
     let getStartlnk = ".btn.btn-outline-light.my-3.my-sm-0.ml-lg-3";
     element(By.css(getStartlnk)).click();
     browser
@@ -28,26 +36,21 @@ describe("ss:", function() {
     //var pssWord ="";
     element(By.css(userName)).sendKeys("abc@gmail.com");
   });
+  xit("Forgot password without email", function() {});
+  xit("Forgot password Invalid email", function() {});
+  xit("Forgot password unregistered email", function() {});
 
-  xit("Forgot Password", function() {
-    var forgotPssWd = 'a[href="javascript:void();"]';
-    var forgotMail = "#forgotpassword";
-    var sendButton = '.btn.btn-primary[type="button"]';
-    var alertDialog;
-
+  it("Forgot Password", function() {
     element(By.css(forgotPssWd)).click();
-    broswer.sleep(1000);
-    element(By.css(forgotMail)).sendKeys("arunarose@gmail.com");
-    browser
-      .manage()
-      .timeouts()
-      .implicitlyWait(50000);
-    element(By.css(sendButton)).click();
+    browser.sleep(1000);
+    element(By.css(forgotMail)).sendKeys("abcd@gmail.com");
 
-    alertDialog = browser.switchTo().alert();
-    alertDialog.getText();
-    // set text to the prompt
-    browser.sleep(10000);
+    browser.sleep(2000);
+    $(sendButton).click();
+    browser.sleep(5000);
+
+    var EC = protractor.ExpectedConditions;
+    browser.wait(EC.visibilityOf($(".toast-success")), 5000);
   });
 
   xit("LOGO present", function() {
@@ -82,5 +85,4 @@ describe("ss:", function() {
       element(By.css(bottomEle)).getWebElement()
     );
   });
-  browser.sleep(20000);
 });
