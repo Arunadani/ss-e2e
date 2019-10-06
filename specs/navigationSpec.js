@@ -1,7 +1,7 @@
 //Nav test
 function navTest(ele, eleContent = "") {
   element(By.css("a[href='" + ele + "']")).click();
-  browser.sleep(2000);
+  browser.sleep(1000);
   expect(element(By.css(ele + " " + eleContent)).isDisplayed()).toBe(true);
 }
 

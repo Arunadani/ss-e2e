@@ -1,0 +1,26 @@
+{
+  "name": "ss-e2e",
+  "version": "1.0.0",
+  "description": "SocioSource End to End Automation",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arunadani/ss-e2e.git"
+  },
+  "keywords": [
+    "protractor",
+    "testing"
+  ],
+  "author": "arunarani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arunadani/ss-e2e/issues"
+  },
+  "homepage": "https://github.com/Arunadani/ss-e2e#readme",
+  "dependencies": {
+    "typescript": "^3.6.3"
+  }
+}

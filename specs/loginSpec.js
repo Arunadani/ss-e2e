@@ -1,5 +1,7 @@
 //TestSpecification.js
 
+("use strict");
+const ssHelper = require("./../helper/ssHelper.js");
 browser.ignoreSynchronization = true;
 
 describe("ss:", function() {
@@ -8,10 +10,10 @@ describe("ss:", function() {
   var forgotMail = "#forgotpassword";
   var sendButton = ".modal-footer button";
   var alertDialog;
-  var toastContainer = "#toast-container";
+
   //.toast-error, .toast-warning, .toast-success
 
-  it("to check the login title", function() {
+  xit("to check the login title", function() {
     browser.get("http://sociosource.com");
     browser
       .manage()
@@ -23,7 +25,7 @@ describe("ss:", function() {
        });*/
   });
   it("Get Started:", function() {
-    let getStartlnk = ".btn.btn-outline-light.my-3.my-sm-0.ml-lg-3";
+    let getStartlnk = "#navbar .nav-item a.btn";
     element(By.css(getStartlnk)).click();
     browser
       .manage()
@@ -44,13 +46,11 @@ describe("ss:", function() {
     element(By.css(forgotPssWd)).click();
     browser.sleep(1000);
     element(By.css(forgotMail)).sendKeys("abcd@gmail.com");
-
     browser.sleep(2000);
     $(sendButton).click();
     browser.sleep(5000);
 
-    var EC = protractor.ExpectedConditions;
-    browser.wait(EC.visibilityOf($(".toast-success")), 5000);
+    expect(ssHelper.toastCheck("success")).toBe(true);
   });
 
   xit("LOGO present", function() {
