@@ -1,4 +1,13 @@
+//TestSpecification.js
+("use strict");
+const ssHelper = require("../helper/ssHelper");
+browser.ignoreSynchronization = true;
+
 xdescribe("Forgot Password", function() {
+  /* Forgot password*/
+  var forgotPssWd = ".card a";
+  var forgotMail = "#forgotpassword";
+  var sendButton = ".modal-footer button";
   xit("Forgot password without email", function() {});
   xit("Forgot password Invalid email", function() {});
   xit("Forgot password unregistered email", function() {});

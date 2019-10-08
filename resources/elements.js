@@ -14,9 +14,20 @@ const ele = {
     checkTerms: 'input[name="terms"]',
     btnRegister: ".btn.selected.btn-block.rounded-0"
   },
-  /*Toast container ele*/
+  /*login*/
+  login: {
+    email: 'input[name="email"]',
+    pswd: '.input-group [name="nombre"]',
+    loginBtn: ".text-center .btn.btn-primary",
+    userIcon: ".nav-item .user"
+  },
+  /*Toast container ele
+   //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",
-  btnGetStarted: "#navbar .nav-item a.btn"
+  /*Get started link*/
+  btnGetStarted: "#navbar .nav-item a.btn",
+  /*LOGO present*/
+  logoPresent: ".navbar .navbar-brand img"
 };
 
 module.exports = ele;

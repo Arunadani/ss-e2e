@@ -8,7 +8,7 @@ function navTest(nav, navContent = "") {
   expect(element(By.css(nav + " " + navContent)).isDisplayed()).toBe(true);
 }
 
-describe("Navigation :", function() {
+xdescribe("Navigation :", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
   });
