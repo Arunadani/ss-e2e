@@ -1,7 +1,7 @@
 exports.config = {
   directConnect: true,
   capabilities: { browserName: "chrome" },
-  baseUrl:"http://sociosource.com",
+  baseUrl: "http://sociosource.com",
   framework: "jasmine",
   specs: ["./specs/*Spec.js"],
 
@@ -11,15 +11,4 @@ exports.config = {
       .window()
       .maximize();
   }
-
-  /* //Report Generation
-    onPrepare: function(){ //configure junit xml report
-
-        var jasmineReporters = require('jasmine-reporters');
-        jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
-           consolidateAll: true,
-           filePrefix: 'guitest-xmloutput',
-           savePath: 'C:\Personal\Sociosocial\Reports'
-        }));
-    }*/
 };

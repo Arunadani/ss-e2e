@@ -1,22 +1,33 @@
 ("use strict");
 const data = require("../resources/data");
 const ele = require("../resources/elements");
+const eleReg = ele.registration;
 
-describe("When user select:", function() {
-  it("Register", function() {
-    element(By.css(ele.btnRegister)).click();
-    element(By.css(ele.uname)).sendKeys(data.uname);
-    element(By.css(ele.email)).sendKeys(data.email);
-    element(By.css(ele.countryCode)).sendKeys(data.countryCode);
-    element(By.css(ele.phone)).sendKeys(data.phone);
-    element(By.css(ele.regPwd)).sendKeys(data.password);
-    element(By.css(ele.selGroup)).click();
-    element(By.css(ele.selGroup + " " + ele.optGroup)).click();
-    element(By.css(ele.selCountry)).click();
-    element(By.css(ele.selCountry + " " + ele.optCountry)).click();
-    element(By.css(ele.checkTerms)).click();
-    element(By.css(ele.btnRegister)).click();
+xdescribe("When user register with: ", function() {
+  it("Correct details", function() {
+    registerMe(data);
+  });
+  xit("existing email", function() {
+    registerMe(data);
+  });
 
-    browser.sleep(5000);
+  xit("using excel", function() {
+    registerMe(data);
   });
 });
+
+let registerMe = user => {
+  element(By.css(eleReg.btnRegister)).click();
+  element(By.css(eleReg.uname)).sendKeys(user.uname);
+  element(By.css(eleReg.email)).sendKeys(user.email);
+  element(By.css(eleReg.countryCode)).sendKeys(user.countryCode);
+  element(By.css(eleReg.phone)).sendKeys(user.phone);
+  element(By.css(eleReg.regPwd)).sendKeys(user.password);
+  element(By.css(eleReg.selGroup)).click();
+  element(By.css(eleReg.selGroup + " " + eleReg.optGroup)).click();
+  element(By.css(eleReg.selCountry)).click();
+  element(By.css(eleReg.selCountry + " " + eleReg.optCountry)).click();
+  element(By.css(eleReg.checkTerms)).click();
+  element(By.css(eleReg.btnRegister)).click();
+  browser.sleep(5000);
+};

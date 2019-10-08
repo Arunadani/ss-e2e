@@ -13,6 +13,9 @@ const ssHelper = {
     let EC = protractor.ExpectedConditions;
     browser.wait(EC.visibilityOf($(" .toast-" + type)), 5000);
     return true;
+  },
+  scrollToElement: ele => {
+    browser.$(ele);
   }
 };
 
