@@ -1,17 +1,27 @@
-xdescribe("Media", function() {
-  xit("Download Icon", function() {
-    let iosIconEle = '.btn.btn-light [src="images/appleicon.png"]';
-    let anroidIconEle = '.btn.btn-light [src="images/playicon.png"]';
-    let viewEle = element(By.css(iosIconEle));
+("use strict");
+const ssHelper = require("../helper/ssHelper");
+browser.ignoreSynchronization = true;
+
+describe("Media", function() {
+  beforeAll(() => {
+    browser.get(ssHelper.ele.baseUrl);
+    browser.sleep(5000);
+  });
+
+  it("Download Icon", function() {
+    let list = element.all(By.css(ssHelper.ele.media.dwndIcon));
     browser.executeScript(
       "arguments[0].scrollIntoView();",
-      viewEle.getWebElement()
+      list.get(0).getWebElement()
     );
-    consle.log("working");
-    //browser.executeScript("viewEle.scrollIntoView(true)");
-    //browser.executeScript("window.scrollTo(0,0);");
-    //broswer.sleep(1000);
-    // viewEle.click();
-    browser.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    if (expect(list.get(0).getText()).toBe("APP STORE")) {
+      list.get(0).click();
+      browser.navigate().back();
+    }
+    if (expect(list.get(1).getText()).toBe("GOOGLE PLAY")) {
+      list.get(1).click();
+      browser.navigate().back();
+    }
+    browser.sleep(5000);
   });
 });

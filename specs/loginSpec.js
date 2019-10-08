@@ -3,7 +3,7 @@
 const ssHelper = require("../helper/ssHelper");
 browser.ignoreSynchronization = true;
 
-describe("Login :", function() {
+xdescribe("Login :", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(5000);

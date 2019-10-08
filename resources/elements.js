@@ -21,6 +21,10 @@ const ele = {
     loginBtn: ".text-center .btn.btn-primary",
     userIcon: ".nav-item .user"
   },
+  /*Media*/
+  media:{
+    dwndIcon:".call-to-action .btn"
+  },
   /*Toast container ele
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",
@@ -28,6 +32,7 @@ const ele = {
   btnGetStarted: "#navbar .nav-item a.btn",
   /*LOGO present*/
   logoPresent: ".navbar .navbar-brand img"
+
 };
 
 module.exports = ele;
