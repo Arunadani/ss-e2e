@@ -28,6 +28,13 @@ const ele = {
     twitterIcon: ".ti-twitter-alt",
     instagramIcon: ".ti-instagram"
   },
+  forgotPswd: {
+    forgotPswdLink: ".card a",
+    forgotPswdEmail: "#forgotpassword",
+    sendButton: ".modal-footer button",
+    alertMessage: ".alert.alert-danger",
+    closeBtn:".close"
+  },
   /*Toast container ele
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",

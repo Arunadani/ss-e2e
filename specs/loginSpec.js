@@ -2,6 +2,7 @@
 ("use strict");
 const ssHelper = require("../helper/ssHelper");
 browser.ignoreSynchronization = true;
+let login = ssHelper.ele.login;
 
 xdescribe("Login :", function() {
   beforeAll(() => {
@@ -14,18 +15,15 @@ xdescribe("Login :", function() {
   });
 
   it("Clikc on 'Get Started'", function() {
-    browser.refresh();
-    element(By.css(ssHelper.ele.btnGetStarted)).click();
+    ssHelper.getStart();
   });
 
   it("Enter username and Password", function() {
-    element(By.css(ssHelper.ele.login.email)).sendKeys(ssHelper.data.email);
-    element(By.css(ssHelper.ele.login.pswd)).sendKeys(ssHelper.data.pswd);
-    element(By.css(ssHelper.ele.login.loginBtn)).click();
+    element(By.css(login.email)).sendKeys(ssHelper.data.email);
+    element(By.css(login.pswd)).sendKeys(ssHelper.data.pswd);
+    element(By.css(login.loginBtn)).click();
     browser.sleep(3000);
-    expect(element(By.css(ssHelper.ele.login.userIcon)).isDisplayed()).toBe(
-      true
-    );
+    expect(element(By.css(login.userIcon)).isDisplayed()).toBe(true);
   });
 
   /* xit("Scroll to Bottom", function() {

@@ -3,7 +3,7 @@ const ssHelper = require("../helper/ssHelper");
 const media = ssHelper.ele.media;
 browser.ignoreSynchronization = true;
 
-describe("Media: ", function() {
+xdescribe("Media: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(5000);
@@ -27,7 +27,7 @@ describe("Media: ", function() {
   });
   browser.sleep(5000);
 });
-
+/*facebook, twitter, instagram, home page video, getstarted*/
 let checkMedia = id => {
   let mediaEle = element(By.css(id));
   if (mediaEle.isDisplayed()) {
