@@ -1,15 +1,16 @@
 ("use strict");
 const ssHelper = require("../helper/ssHelper");
+const media = ssHelper.ele.media;
 browser.ignoreSynchronization = true;
 
-describe("Media", function() {
+describe("Media: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(5000);
   });
 
-  it("Download Icon", function() {
-    let list = element.all(By.css(ssHelper.ele.media.dwndIcon));
+  xit("Is APP link Available", function() {
+    let list = element.all(By.css(media.dwndIcon));
     browser.executeScript(
       "arguments[0].scrollIntoView();",
       list.get(0).getWebElement()
@@ -24,4 +25,19 @@ describe("Media", function() {
     }
     browser.sleep(5000);
   });
+
+  it("Social Meida", function() {
+    checkMedia(media.facebookIcon);
+    checkMedia(media.twitterIcon);
+    checkMedia(media.instagramIcon);
+  });
+  browser.sleep(5000);
 });
+
+let checkMedia = id => {
+  let mediaEle = element(By.css(id));
+  if (mediaEle.isDisplayed()) {
+    mediaEle.click();
+    browser.navigate().back();
+  }
+};

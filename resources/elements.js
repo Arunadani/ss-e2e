@@ -22,8 +22,11 @@ const ele = {
     userIcon: ".nav-item .user"
   },
   /*Media*/
-  media:{
-    dwndIcon:".call-to-action .btn"
+  media: {
+    dwndIcon: ".call-to-action .btn",
+    facebookIcon: ".ti-facebook",
+    twitterIcon: ".ti-twitter-alt",
+    instagramIcon: ".ti-instagram"
   },
   /*Toast container ele
    //.toast-error, .toast-warning, .toast-success*/
@@ -32,7 +35,6 @@ const ele = {
   btnGetStarted: "#navbar .nav-item a.btn",
   /*LOGO present*/
   logoPresent: ".navbar .navbar-brand img"
-
 };
 
 module.exports = ele;
