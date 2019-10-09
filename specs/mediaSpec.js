@@ -9,21 +9,15 @@ describe("Media: ", function() {
     browser.sleep(5000);
   });
 
-  xit("Is APP link Available", function() {
+  it("Is APP link Available", function() {
+    let arrApps = ["APP STORE", "GOOGLE PLAY"];
     let list = element.all(By.css(media.dwndIcon));
-    browser.executeScript(
-      "arguments[0].scrollIntoView();",
-      list.get(0).getWebElement()
-    );
-    if (expect(list.get(0).getText()).toBe("APP STORE")) {
-      list.get(0).click();
-      browser.navigate().back();
+    for (let i = 0; i < list.length; i++) {
+      if (expect(list.get(i).getText()).toBe(arrApps[i])) {
+        list.get(i).click();
+        browser.navigate().back();
+      }
     }
-    if (expect(list.get(1).getText()).toBe("GOOGLE PLAY")) {
-      list.get(1).click();
-      browser.navigate().back();
-    }
-    browser.sleep(5000);
   });
 
   it("Social Meida", function() {
