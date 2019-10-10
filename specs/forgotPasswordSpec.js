@@ -11,62 +11,51 @@ describe("Forgot Password", function() {
     ssHelper.getStart();
   });
 
-  xit("Forgot password without email", function() {
+  it("Forgot password without email", function() {
     gotoForgotPswd();
-    //clickClose();
-    //clickSendbtn();
-    //checkAlert();
+    element(By.css(forgotPswd.forgotPswdEmail)).click();
+    clickSendbtn();
+    expect(element(By.css(forgotPswd.alertMessage)).isDisplayed()).toBe(true);
+    clickClose();
   });
   it("Forgot password Invalid email", function() {
+    browser.refresh();
     gotoForgotPswd();
-    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("wrong.amail.com");
+    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("wrong.mail.com");
     clickSendbtn();
     expect(ssHelper.toastCheck("error")).toBe(true);
+    clickClose();
   });
-  xit("Forgot password unregistered email", function() {});
+  it("Forgot password unregistered email", function() {
+    browser.refresh();
+    gotoForgotPswd();
+    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("unreg@gmail.com");
+    clickSendbtn();
+    //expect(ssHelper.toastCheck("error")).toBe(true);
+    clickClose();
+  });
 
-  xit("Forgot Password", function() {
-    element(By.css(forgotPssWd)).click();
-    browser.sleep(1000);
-    element(By.css(forgotMail)).sendKeys("abcd@gmail.com");
-    browser.sleep(2000);
-    $(sendButton).click();
-    browser.sleep(5000);
-
+  it("Forgot Password", function() {
+    browser.refresh();
+    gotoForgotPswd();
+    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("abcd@gmail.com");
+    /* browser.sleep(2000);
+    $(sendButton).click();*/
+    clickSendbtn();
+    browser.sleep(3000);
     expect(ssHelper.toastCheck("success")).toBe(true);
   });
   /**functions */
   let gotoForgotPswd = () => {
     element(By.css(forgotPswd.forgotPswdLink)).click();
-    browser.sleep(3000);
+    browser.sleep(1000);
   };
   let clickSendbtn = () => {
     element(By.css(forgotPswd.sendButton)).click();
-    browser.sleep(2000);
-  };
-  let checkAlert = () => {
-    element(By.css(".alert.alert-danger"));
-    /* expect(element(By.css(forgotPswd.alertMessage)).isPresent()).toBe(
-        "Email id is required."
-      )
- */
-
-    console.log("EMAIL");
-    browser.sleep(2000);
+    browser.sleep(1000);
   };
   let clickClose = () => {
-    console.log("click close");
-    /* browser
-      .actions()
-      .mouseMove(element(By.css(forgotPswd.clickClose)))
-      .click(); */
-    //$(forgotPswd.clickClose).sendKeys(protractor.Key.ESCAPE);
-    //element(By.css(forgotPswd.clickClose)).click();
-    browser
-      .actions()
-      .click(element(by.css(forgotPswd.clickClose)))
-      .perform();
+    $("body.modal-open .close").click();
     browser.sleep(2000);
   };
-  browser.sleep(5000);
 });
