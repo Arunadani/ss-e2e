@@ -26,7 +26,10 @@ const ele = {
     dwndIcon: ".call-to-action .btn",
     facebookIcon: ".ti-facebook",
     twitterIcon: ".ti-twitter-alt",
-    instagramIcon: ".ti-instagram"
+    instagramIcon: ".ti-instagram",
+    watchVideo: ".play-button",
+    getStart: '.play-button a[href="http://sociosource.com/webapp/"]',
+    closeBtn: ".modal-body .close"
   },
   forgotPswd: {
     forgotPswdLink: ".card a",
