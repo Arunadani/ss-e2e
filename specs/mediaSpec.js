@@ -3,7 +3,7 @@ const ssHelper = require("../helper/ssHelper");
 const media = ssHelper.ele.media;
 browser.ignoreSynchronization = true;
 
-describe("Media: ", function() {
+xdescribe("Media: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(5000);

@@ -19,7 +19,8 @@ const ele = {
     email: 'input[name="email"]',
     pswd: '.input-group [name="nombre"]',
     loginBtn: ".text-center .btn.btn-primary",
-    userIcon: ".nav-item .user"
+    userIcon: ".nav-item .user",
+    pswdEye: ".input-group-append .fa"
   },
   /*Media*/
   media: {
