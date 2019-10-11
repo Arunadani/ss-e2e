@@ -12,7 +12,8 @@ const ele = {
     selCountry: 'select[name="countryname"]',
     optCountry: 'option[value="4: 4"]',
     checkTerms: 'input[name="terms"]',
-    btnRegister: ".btn.selected.btn-block.rounded-0"
+    btnRegister: ".btn.selected.btn-block.rounded-0",
+    regSuccess: ".pricing .card-pricing"
   },
   /*login*/
   login: {
