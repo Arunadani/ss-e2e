@@ -1,33 +1,38 @@
 ("use strict");
-const data = require("../resources/data");
-const ele = require("../resources/elements");
-const eleReg = ele.registration;
+const ssHelper = require("../helper/ssHelper");
 
 xdescribe("When user register with: ", function() {
+  const eleReg = ssHelper.ele.registration;
+  const data = ssHelper.data;
   it("Correct details", function() {
     registerMe(data);
+    expect($(eleReg.regSuccess).length()).toBe(4);
+    //Check toast success
   });
   xit("existing email", function() {
     registerMe(data);
+    //Check toast error
   });
 
-  xit("using excel", function() {
+  xit("When registering users from excel data", function() {
+    //Loop thru with excel data
     registerMe(data);
+    expect($(eleReg.regSuccess).length()).toBe(4);
   });
 });
 
 let registerMe = user => {
-  element(By.css(eleReg.btnRegister)).click();
-  element(By.css(eleReg.uname)).sendKeys(user.uname);
-  element(By.css(eleReg.email)).sendKeys(user.email);
-  element(By.css(eleReg.countryCode)).sendKeys(user.countryCode);
-  element(By.css(eleReg.phone)).sendKeys(user.phone);
-  element(By.css(eleReg.regPwd)).sendKeys(user.password);
-  element(By.css(eleReg.selGroup)).click();
-  element(By.css(eleReg.selGroup + " " + eleReg.optGroup)).click();
-  element(By.css(eleReg.selCountry)).click();
-  element(By.css(eleReg.selCountry + " " + eleReg.optCountry)).click();
-  element(By.css(eleReg.checkTerms)).click();
-  element(By.css(eleReg.btnRegister)).click();
+  $(eleReg.btnRegister).click();
+  $(eleReg.uname).sendKeys(user.uname);
+  $(eleReg.email).sendKeys(user.email);
+  $(eleReg.countryCode).sendKeys(user.countryCode);
+  $(eleReg.phone).sendKeys(user.phone);
+  $(eleReg.regPwd).sendKeys(user.password);
+  $(eleReg.selGroup).click();
+  $(eleReg.selGroup + " " + eleReg.optGroup).click();
+  $(eleReg.selCountry).click();
+  $(eleReg.selCountry + " " + eleReg.optCountry).click();
+  $(eleReg.checkTerms).click();
+  $(eleReg.btnRegister).click();
   browser.sleep(5000);
 };
