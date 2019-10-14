@@ -1,10 +1,16 @@
 ("use strict");
 const ssHelper = require("../helper/ssHelper");
+var XL = require("../helper/excelHelper");
+const eleReg = ssHelper.ele.registration;
+const data = ssHelper.data;
+browser.ignoreSynchronization = true;
+describe("When user register with: ", function() {
+  beforeAll(() => {
+    browser.get(ssHelper.ele.baseUrl);
+    browser.sleep(3000);
+  });
 
-xdescribe("When user register with: ", function() {
-  const eleReg = ssHelper.ele.registration;
-  const data = ssHelper.data;
-  it("Correct details", function() {
+  xit("Correct details", function() {
     registerMe(data);
     expect($(eleReg.regSuccess).length()).toBe(4);
     //Check toast success
@@ -14,10 +20,17 @@ xdescribe("When user register with: ", function() {
     //Check toast error
   });
 
-  xit("When registering users from excel data", function() {
-    //Loop thru with excel data
-    registerMe(data);
-    expect($(eleReg.regSuccess).length()).toBe(4);
+  it("excel data", function() {
+    //expect($(eleReg.regSuccess).length()).toBe(4);
+    var sendData = XL.readExcelData("Register", ssHelper.ele.excelFilePath);
+    sendData.forEach(function(data) {
+      /* 1.check all the required data is present
+      2.navigate to home page
+      3.logout*/
+      ssHelper.getStart();
+      registerMe(data);
+      browser.navigate().back();
+    });
   });
 });
 
@@ -33,6 +46,8 @@ let registerMe = user => {
   $(eleReg.selCountry).click();
   $(eleReg.selCountry + " " + eleReg.optCountry).click();
   $(eleReg.checkTerms).click();
-  $(eleReg.btnRegister).click();
+  // $(eleReg.btnRegister).click();
+  $(by.buttonText("Register"));
+
   browser.sleep(5000);
 };

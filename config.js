@@ -6,8 +6,8 @@ exports.config = {
   jasmineNodeOpts: {
     defaultTimeoutInterval: 2500000
   },
-  specs: ["./specs/*Spec.js"],
-
+  //specs: ["./specs/*Spec.js"],
+  specs: ["./specs/registerSpec.js"],
   onPrepare: function() {
     browser
       .manage()

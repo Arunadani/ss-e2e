@@ -1,5 +1,6 @@
 const ele = {
   baseUrl: "http://sociosource.com",
+  excelFilePath: "./resources/imports/loginTestData.xlsx",
   /* Register ele*/
   registration: {
     uname: 'input[name="name"]',
