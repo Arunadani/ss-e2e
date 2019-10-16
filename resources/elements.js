@@ -41,6 +41,18 @@ const ele = {
     /* alertMessage: ".alert.alert-danger",
     closeBtn:".close" */
   },
+  coreApp: {
+    btnAddmore: ".btn-primary.float-right",
+    ssMedia: "#mediaModal h4",
+    selectMedia: "#mediaModal h5",
+    leftReport: ".col-lg-2.border-left",
+    calender: ".btn.btn-outline-secondary.calendar",
+    fromCalender: '.input-group [placeholder="From"]',
+    toCalender: '.input-group [placeholder="To"]',
+    generate:".btn.btn-primary",
+    //".input-group.form-control.ng-pristine.ng-valid.ng-touched",
+    month: ".custom-select"
+  },
   /*Toast container ele
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",
