@@ -13,6 +13,10 @@ const ssHelper = {
     browser.refresh();
     element(By.css(ssHelper.ele.btnGetStarted)).click();
   },
+  signOut: function() {
+  
+    element(By.css(ssHelper.ele.signOut)).click();
+  },
   toastCheck: type => {
     let EC = protractor.ExpectedConditions;
     browser.wait(EC.visibilityOf($(" .toast-" + type)), 5000);

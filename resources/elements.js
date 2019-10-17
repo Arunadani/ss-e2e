@@ -24,6 +24,7 @@ const ele = {
     userIcon: ".nav-item .user",
     pswdEye: ".input-group-append .fa"
   },
+  signOut: ".fa.fa-sign-out",
   /*Media*/
   media: {
     dwndIcon: ".call-to-action .btn",
@@ -49,10 +50,19 @@ const ele = {
     calender: ".btn.btn-outline-secondary.calendar",
     fromCalender: '.input-group [placeholder="From"]',
     toCalender: '.input-group [placeholder="To"]',
-    generate:".btn.btn-primary",
-    //".input-group.form-control.ng-pristine.ng-valid.ng-touched",
-    month: ".custom-select"
-  },
+    generate: ".btn.btn-primary",
+    month: ".custom-select",
+    createNotes:".mt-1 h5",
+    notes:".mt-1 h4",
+    writeNotes:".form-control",
+    copyText:".cursor"
+    },
+    dashBd:{
+     googleIcon:'a [src="assets/pictures/google-icon.png"]',
+     allTab:'#nav-tab',
+     commentsTab:".nav-item.nav-link"
+
+    },
   /*Toast container ele
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",

@@ -4,6 +4,7 @@ const ssHelper = require("../helper/ssHelper");
 browser.ignoreSynchronization = true;
 let login = ssHelper.ele.login;
 let core = ssHelper.ele.coreApp;
+let dashBD = ssHelper.ele.dashBd;
 
 describe("coreApp: ", function() {
   beforeAll(() => {
@@ -32,7 +33,7 @@ describe("coreApp: ", function() {
     //$("input#customCheck2").click();
   });
 
-  it("Report", function() {
+  xit("Report", function() {
     browser.sleep(5000);
     expect(element(By.css(core.leftReport)).getText()).toContain("Report");
     element(By.css(core.fromCalender)).sendKeys("2019-02-11");
@@ -40,8 +41,25 @@ describe("coreApp: ", function() {
     element(By.buttonText("Generate")).click();
     browser.sleep(2000);
     expect(ssHelper.toastCheck("success")).toBe(true);
-
+  });
+  xit("Report file downloaded or not", function() {});
+  it("Dashboard", function() {
+    browser.sleep(3000);
+    checkDashBoardIcon(dashBD.googleIcon);
+  });
+  it("Create Notes & Notes", function() {
+    expect(element(By.css(core.createNotes)).getText()).toContain(
+      "Create Notes"
+    );
+    element(By.css(core.writeNotes)).sendKeys("very nice");
+    element(By.buttonText("Submit")).click();
+    browser.sleep(2000);
+    expect(ssHelper.toastCheck("success")).toBe(true);
+    expect(element(By.css(core.notes)).getText()).toContain("Notes");
     browser.sleep(5000);
+  });
+  it("SignOut", function() {
+    ssHelper.signOut();
   });
 });
 
@@ -52,4 +70,22 @@ let userLogin = () => {
   element(By.css(login.loginBtn)).click();
   browser.sleep(3000);
   expect(element(By.css(login.userIcon)).isDisplayed()).toBe(true);
+};
+let checkDashBoardIcon = id => {
+  let arrayTab = ["Positive", "Negative", "Replied", "Completed"];
+  element(By.css(id)).click();
+  let tabBar = element(By.css(dashBD.allTab));
+  let list = element.all(By.css(dashBD.commentsTab));
+  console.log("LIST LEN:" + list.length);
+
+  if (tabBar.isDisplayed()) {
+    for (let i = 0; i < 4; i++) {
+      if (expect(list.get(i).getText()).toBe(arrayTab[i])) {
+        list.get(i).click();
+        browser.sleep(2000);
+      } else {
+        console.log("FALSE");
+      }
+    }
+  }
 };
