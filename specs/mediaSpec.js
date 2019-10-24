@@ -3,7 +3,7 @@ const ssHelper = require("../helper/ssHelper");
 const media = ssHelper.ele.media;
 browser.ignoreSynchronization = true;
 
-xdescribe("Media: ", function() {
+describe("Media: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(5000);
@@ -25,12 +25,13 @@ xdescribe("Media: ", function() {
     checkMedia(media.twitterIcon);
     checkMedia(media.instagramIcon);
   });
-  xit("Watch Viedo", function() {
+  it("Watch Viedo", function() {
     element(By.css(media.watchVideo)).click();
     browser.sleep(5000);
+    expect(element(By.css("#videoModal")).isDisplayed()).toBe(true);
     element(By.css(media.closeBtn)).click();
   });
-  it("Get started", function() {
+  xit("Get started", function() {
     element(By.css(media.getStart)).click();
   });
 });
