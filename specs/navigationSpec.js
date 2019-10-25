@@ -3,13 +3,16 @@ const ssHelper = require("../helper/ssHelper");
 browser.ignoreSynchronization = true;
 let loginEle = ssHelper.ele.login;
 let loginData = ssHelper.data;
+beforeAll(() => {
+  browser.get(ssHelper.ele.baseUrl);
+});
 
-describe("Navigation :", function() {
+xdescribe("Navigation Header:", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
   });
 
-  it("Home", function() {
+  xit("Home", function() {
     navTest("#home");
   });
 
@@ -39,31 +42,30 @@ describe("Navigation :", function() {
     navTest("#pricing");
     priceCheck();
   });
+});
 
-  it("Contact", function() {
+describe("Navigation Footer", function() {
+  it("Privacy Policy,Phone Number & Email", function() {
     navTest("#contact");
-    xit("T&C and Privacy Policy", function() {
+
+    element(
+      By.cssContainingText(".terms-policy a", "Terms and Conditions")
+    ).click();
+    browser.navigate().back();
+    element(By.cssContainingText(".terms-policy a", "Privacy Policy")).click();
+    browser.navigate().back();
+
+    browser.sleep(5000);
+    expect(
       element(
-        By.cssContainingText(".terms-policy a", "Terms and Conditions")
-      ).click();
-      browser.navigate().back();
+        By.cssContainingText("#contact a", "support@sociosource.com")
+      ).isDisplayed()
+    ).toBe(true);
+    expect(
       element(
-        By.cssContainingText(".terms-policy a", "Privacy Policy")
-      ).click();
-      browser.navigate().back();
-    });
-    it("Email Id & Address", function() {
-      expect(
-        element(
-          By.cssContainingText(".ti-email a", "support@sociosource.com")
-        ).isDisplayed()
-      ).toBe(true);
-      expect(
-        element(
-          By.cssContainingText("ti-headphone-alt a", "+81 90 4708 2567")
-        ).isDisplayed()
-      ).toBe(true);
-    });
+        By.cssContainingText("#contact a", "+81 90 4708 2567")
+      ).isDisplayed()
+    ).toBe(true);
   });
 });
 
@@ -84,12 +86,6 @@ function priceCheck() {
       element(
         By.cssContainingText(".btn.btn-primary", "Choose this Plan")
       ).click();
-      /*  if(i=0){
-      element(By.cssContainingText(".list-group-item", "  Up to 2 social media accounts"));
-      element(By.cssContainingText(".btn.btn-primary", "Choose this Plan")
-      ).click(); 
-    } */
-
       browser.sleep(5000);
       ssHelper.loginTest(loginEle, loginData);
       ssHelper.signOut();

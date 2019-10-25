@@ -1,6 +1,7 @@
 ("use strict");
 
 const ssHelper = {
+  runAs: "IMPORT",
   data: require("../resources/data"),
   ele: require("../resources/elements"),
   navTest: () => {

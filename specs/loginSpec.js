@@ -36,7 +36,7 @@ describe("Login: ", function() {
     browser.sleep(3000);
     expect(element(By.css(login.userIcon)).isDisplayed()).toBe(true);
   });
-  xit("Enter Username and Password with Eye Icon", function() {
+  it("Enter Username and Password with Eye Icon", function() {
     //ssHelper.getStart();
     let pswdEyecheck = element(By.css(login.pswdEye));
     element(By.css(login.email)).sendKeys(ssHelper.data.email);
@@ -50,12 +50,4 @@ describe("Login: ", function() {
     expect(element(By.css(login.userIcon)).isDisplayed()).toBe(true);
   });
 
-  /* xit("Scroll to Bottom", function() {
-    let bottomEle = ".my-5.text-center";
-    //let print;
-    browser.executeScript(
-      "arguments[0].scrollIntoView();",
-      element(By.css(bottomEle)).getWebElement()
-    );
-  });*/
 });

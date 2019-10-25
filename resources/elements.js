@@ -38,9 +38,9 @@ const ele = {
   forgotPswd: {
     forgotPswdLink: ".card a",
     forgotPswdEmail: "#forgotpassword",
-    sendButton: ".modal-footer button"
-    /* alertMessage: ".alert.alert-danger",
-    closeBtn:".close" */
+    sendButton: ".modal-footer button",
+    alertMessage: ".alert.alert-danger",
+    closeBtn:"body.modal-open .close" 
   },
   coreApp: {
     btnAddmore: ".btn-primary.float-right",

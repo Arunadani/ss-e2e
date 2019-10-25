@@ -4,7 +4,7 @@ const ssHelper = require("../helper/ssHelper");
 browser.ignoreSynchronization = true;
 let forgotPswd = ssHelper.ele.forgotPswd;
 
-xdescribe("Forgot Password :", function() {
+describe("Forgot Password :", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(5000);
@@ -12,47 +12,36 @@ xdescribe("Forgot Password :", function() {
   });
 
   it("without email", function() {
-    gotoForgotPswd();
-    element(By.css(forgotPswd.forgotPswdEmail)).click();
-    clickSendbtn();
-    expect(element(By.css(forgotPswd.alertMessage)).isDisplayed()).toBe(true);
-    clickClose();
+    checkForgotPassword("", "");
   });
+
   it("Invalid email", function() {
-    browser.refresh();
-    gotoForgotPswd();
-    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("wrong.mail.com");
-    clickSendbtn();
-    expect(ssHelper.toastCheck("error")).toBe(true);
-    clickClose();
+    checkForgotPassword("wrong.mail.com", "error");
   });
+
   it("unregistered email", function() {
-    browser.refresh();
-    gotoForgotPswd();
-    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("unreg@gmail.com");
-    clickSendbtn();
-    clickClose();
+    checkForgotPassword("unreg@gmail.com", "error");
+    /*Its failing due to  UI issue*/
   });
 
   it("valid email", function() {
-    browser.refresh();
-    gotoForgotPswd();
-    element(By.css(forgotPswd.forgotPswdEmail)).sendKeys("abcd@gmail.com");
-    clickSendbtn();
-    browser.sleep(6000);
-    expect(ssHelper.toastCheck("success")).toBe(true);
+    checkForgotPassword("abcd@gmail.com", "success");
   });
-  /**functions */
-  let gotoForgotPswd = () => {
-    element(By.css(forgotPswd.forgotPswdLink)).click();
-    browser.sleep(1000);
-  };
-  let clickSendbtn = () => {
-    element(By.css(forgotPswd.sendButton)).click();
-    browser.sleep(1000);
-  };
-  let clickClose = () => {
-    $("body.modal-open .close").click();
-    browser.sleep(2000);
-  };
 });
+
+function checkForgotPassword(email, status) {
+  element(By.css(forgotPswd.forgotPswdLink)).click();
+  browser.sleep(1000);
+  element(By.css(forgotPswd.forgotPswdEmail)).sendKeys(email);
+  element(By.css(forgotPswd.sendButton)).click();
+  let waitTill = status == "success" ? 6000 : 1000;
+  browser.sleep(waitTill);
+  if (email) {
+    expect(ssHelper.toastCheck(status)).toBe(true);
+  } else {
+    expect(element(By.css(forgotPswd.alertMessage)).isDisplayed()).toBe(true);
+  }
+  $(forgotPswd.closeBtn).click();
+  browser.sleep(2000);
+  browser.refresh();
+}
