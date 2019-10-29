@@ -7,16 +7,16 @@ beforeAll(() => {
   browser.get(ssHelper.ele.baseUrl);
 });
 
-xdescribe("Navigation Header:", function() {
+describe("Navigation Header", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
   });
 
-  xit("Home", function() {
+  it("Click on Home Tab", function() {
     navTest("#home");
   });
 
-  xit("Features", function() {
+  it("Click on Features Tab", function() {
     let arrayTab = ["Tags", "No Robots", "Reports"];
     let list = element.all(By.css(".nav.nav-tabs .nav-link"));
     navTest("#features");
@@ -31,21 +31,23 @@ xdescribe("Navigation Header:", function() {
     }
   });
 
-  xit("Benefits", function() {
+  it("Click on Benefits Tab", function() {
     navTest("#benfits");
     expect(element(By.css(".list-unstyled")).isDisplayed()).toBe(true);
     expect(element(By.css('img[alt="iphone"]')).isDisplayed()).toBe(true);
     expect($$("#benfits .media").count()).toBe(6);
   });
 
-  xit("Pricing", function() {
+  it("Click on Pricing Tab", function() {
     navTest("#pricing");
-    priceCheck();
+    // Need to check the "choose the plan
+    //priceCheck();
   });
 });
 
 describe("Navigation Footer", function() {
-  it("Privacy Policy,Phone Number & Email", function() {
+  browser.sleep(1000);
+  it("Click on Privacy Policy,Phone Number & Email", function() {
     navTest("#contact");
 
     element(
@@ -67,6 +69,7 @@ describe("Navigation Footer", function() {
       ).isDisplayed()
     ).toBe(true);
   });
+  browser.refresh();
 });
 
 //Nav test

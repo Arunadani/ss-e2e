@@ -31,7 +31,7 @@ const ele = {
     facebookIcon: ".ti-facebook",
     twitterIcon: ".ti-twitter-alt",
     instagramIcon: ".ti-instagram",
-    watchVideo: ".play-button",
+    watchVideo: ".play-button .ti-control-play",
     getStart: '.play-button a[href="http://sociosource.com/webapp/"]',
     closeBtn: ".modal-body .close"
   },
@@ -40,7 +40,7 @@ const ele = {
     forgotPswdEmail: "#forgotpassword",
     sendButton: ".modal-footer button",
     alertMessage: ".alert.alert-danger",
-    closeBtn:"body.modal-open .close" 
+    closeBtn: "body.modal-open .close"
   },
   coreApp: {
     btnAddmore: ".btn-primary.float-right",
@@ -52,17 +52,16 @@ const ele = {
     toCalender: '.input-group [placeholder="To"]',
     generate: ".btn.btn-primary",
     month: ".custom-select",
-    createNotes:".mt-1 h5",
-    notes:".mt-1 h4",
-    writeNotes:".form-control",
-    copyText:".cursor"
-    },
-    dashBd:{
-     googleIcon:'a [src="assets/pictures/google-icon.png"]',
-     allTab:'#nav-tab',
-     commentsTab:".nav-item.nav-link"
-
-    },
+    createNotes: ".mt-1 h5",
+    notes: ".mt-1 h4",
+    writeNotes: ".form-control",
+    copyText: ".cursor"
+  },
+  dashBd: {
+    googleIcon: 'a [src="assets/pictures/google-icon.png"]',
+    allTab: "#nav-tab",
+    commentsTab: ".nav-item.nav-link"
+  },
   /*Toast container ele
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",
