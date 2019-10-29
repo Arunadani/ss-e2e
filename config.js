@@ -7,11 +7,12 @@ exports.config = {
     defaultTimeoutInterval: 2500000
   },
   //specs: ["./specs/*Spec.js"],
-  specs: [
+  /* specs: [
     "./specs/mediaSpec.js",
     "./specs/navigationSpec.js",
     "./specs/forgotPasswordSpec.js"
-  ],
+  ], */
+  specs: ["./specs/loginSpec.js"],
   onPrepare: function() {
     global.EC = protractor.ExpectedConditions;
     browser

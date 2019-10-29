@@ -46,7 +46,7 @@ describe("Navigation Header", function() {
 });
 
 describe("Navigation Footer", function() {
-  browser.sleep(1000);
+  browser.sleep(2000);
   it("Click on Privacy Policy,Phone Number & Email", function() {
     navTest("#contact");
 
@@ -90,7 +90,7 @@ function priceCheck() {
         By.cssContainingText(".btn.btn-primary", "Choose this Plan")
       ).click();
       browser.sleep(5000);
-      ssHelper.loginTest(loginEle, loginData);
+      ssHelper.loginTest(loginEle, loginData,0);
       ssHelper.signOut();
       browser.navigate().back();
     }

@@ -19,13 +19,13 @@ describe("Forgot Password", function() {
     checkForgotPassword("wrong.mail.com", "error");
   });
 
+  it("By entering a valid Email", function() {
+    checkForgotPassword("abcd@gmail.com", "success");
+  });
+
   it("By entering an unregistered Email", function() {
     checkForgotPassword("unreg@gmail.com", "error");
     /*Its failing due to  UI issue*/
-  });
-
-  it("By entering a valid Email", function() {
-    checkForgotPassword("abcd@gmail.com", "success");
   });
 });
 
