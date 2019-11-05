@@ -10,10 +10,8 @@ describe("Media: ", function() {
   });
   it("Click on Get started", function() {
     element(By.cssContainingText(".play-button", "Get Started")).click();
-    // element(By.css(media.getStart)).click();
-    /*  let a = element(By.partialLinkText("webapp"));
-    a.click(); */
     browser.sleep(3000);
+    expect(element(By.css("h3")).getText()).toBe("Login");
     browser.navigate().back();
   });
   it("Click on Watch Video", function() {
@@ -46,8 +44,9 @@ describe("Media: ", function() {
 /*facebook, twitter, instagram, home page video, getstarted*/
 let checkMedia = id => {
   let mediaEle = element(By.css(id));
-  if (mediaEle.isDisplayed()) {
+  expect(mediaEle.isDisplayed()).toBeTruthy();
+  /* if (mediaEle.isDisplayed()) {
     mediaEle.click();
     browser.navigate().back();
-  }
+  } */
 };

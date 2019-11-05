@@ -21,8 +21,10 @@ describe("Login: ", function() {
 
   it("Enter Username & Password without Eye Icon", function() {
     ssHelper.loginTest(loginEle, loginData, 0);
+    ssHelper.signOut();
   });
   it("Enter Username and Password with Eye Icon", function() {
     ssHelper.loginTest(loginEle, loginData, 1);
+    ssHelper.signOut();
   });
 });

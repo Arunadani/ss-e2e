@@ -90,7 +90,7 @@ function priceCheck() {
         By.cssContainingText(".btn.btn-primary", "Choose this Plan")
       ).click();
       browser.sleep(5000);
-      ssHelper.loginTest(loginEle, loginData,0);
+      ssHelper.loginTest(loginEle, loginData, 0);
       ssHelper.signOut();
       browser.navigate().back();
     }

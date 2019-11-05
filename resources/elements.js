@@ -65,7 +65,7 @@ const ele = {
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",
   /*Get started link*/
-  btnGetStarted: "#navbar .nav-item a.btn",
+ btnGetStarted: "#navbar .nav-item a.btn",
   /*LOGO present*/
   logoPresent: ".navbar .navbar-brand img"
 };

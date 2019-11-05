@@ -5,7 +5,8 @@ var ssHelper = require("../helper/ssHelper.js");
 
 browser.ignoreSynchronization = true;
 
-describe("Excel Read:", function() {
+xdescribe("Excel Read:", function() {
+  //calling function
   var sendData = XL.readExcelData("Register", ssHelper.ele.excelFilePath);
 
   sendData.forEach(function(data) {

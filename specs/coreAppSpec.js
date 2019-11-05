@@ -2,52 +2,52 @@
 ("use strict");
 const ssHelper = require("../helper/ssHelper");
 browser.ignoreSynchronization = true;
-let login = ssHelper.ele.login;
+
+let loginEle = ssHelper.ele.login;
+let loginData = ssHelper.data;
+
 let core = ssHelper.ele.coreApp;
 let dashBD = ssHelper.ele.dashBd;
 
-describe("coreApp: ", function() {
+describe("After login: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(3000);
     ssHelper.getStart();
   });
   it("Login:", function() {
-    userLogin();
+    ssHelper.loginTest(loginEle, loginData, 0);
   });
-  xit("Add more:", function() {
+  xit("Click on Add more:", function() {
     element(By.css(core.btnAddmore)).click();
     browser.sleep(1000);
     expect(element(By.css(core.ssMedia)).getText()).toEqual("Social Media");
     browser.sleep(2000);
-    /*Select Media*/
     element(by.cssContainingText(core.selectMedia, "facebook"));
     browser.sleep(2000);
     //element(By.css(".custom-control #customCheck1")).click();
     let fbselect = element(by.css("label[for='customCheck1']")).then(val => {
       console.log(val);
     });
-    //fbselect.click();
     browser.sleep(3000);
-
-    //$("input#customCheck2").click();
   });
 
-  xit("Report", function() {
-    browser.sleep(5000);
-    expect(element(By.css(core.leftReport)).getText()).toContain("Report");
-    element(By.css(core.fromCalender)).sendKeys("2019-02-11");
-    element(By.css(core.toCalender)).sendKeys("2019-03-11");
-    element(By.buttonText("Generate")).click();
-    browser.sleep(2000);
+  it("Generate Report", function() {
+    generateReport("2019-02-11", "2019-03-11");
     expect(ssHelper.toastCheck("success")).toBe(true);
   });
+  it("Generate Report with Wrong Date Format", function() {
+    generateReport("02-11-2018", "03-12-2019");
+    expect(element(By.css(".toast-message")).getText()).toContain(
+      "Please select the From/To date"
+    );
+  });
   xit("Report file downloaded or not", function() {});
-  it("Dashboard", function() {
+  it("Click on Dashboard", function() {
     browser.sleep(3000);
     checkDashBoardIcon(dashBD.googleIcon);
   });
-  it("Create Notes & Notes", function() {
+  it("Check Create Notes & Notes field", function() {
     expect(element(By.css(core.createNotes)).getText()).toContain(
       "Create Notes"
     );
@@ -63,14 +63,15 @@ describe("coreApp: ", function() {
   });
 });
 
-let userLogin = () => {
-  let pswdText = element(By.css(login.pswd));
-  element(By.css(login.email)).sendKeys(ssHelper.data.email);
-  pswdText.sendKeys(ssHelper.data.pswd);
-  element(By.css(login.loginBtn)).click();
-  browser.sleep(3000);
-  expect(element(By.css(login.userIcon)).isDisplayed()).toBe(true);
-};
+function generateReport(from, to) {
+  browser.sleep(5000);
+  expect(element(By.css(core.leftReport)).getText()).toContain("Report");
+  element(By.css(core.fromCalender)).sendKeys(from);
+  element(By.css(core.toCalender)).sendKeys(to);
+  element(By.buttonText("Generate")).click();
+  browser.sleep(2000);
+}
+
 let checkDashBoardIcon = id => {
   let arrayTab = ["Positive", "Negative", "Replied", "Completed"];
   element(By.css(id)).click();

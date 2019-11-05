@@ -7,12 +7,7 @@ exports.config = {
     defaultTimeoutInterval: 2500000
   },
   //specs: ["./specs/*Spec.js"],
-  /* specs: [
-    "./specs/mediaSpec.js",
-    "./specs/navigationSpec.js",
-    "./specs/forgotPasswordSpec.js"
-  ], */
-  specs: ["./specs/loginSpec.js"],
+  specs: ["./specs/coreAppSpec.js"],
   onPrepare: function() {
     global.EC = protractor.ExpectedConditions;
     browser
@@ -21,11 +16,11 @@ exports.config = {
       .maximize();
     jasmine.getEnv().addReporter(
       new Jasmine2HtmlReporter({
-        savePath: ".test/ss_e2e_screenShot",
+        savePath: "reports/screenshot",
         takeScreenshots: true,
         takeScreenshotsOnlyOnFailures: true,
         fixedScreenshotName: true,
-        fileNamePrefix: "Prefix",
+        fileNamePrefix: "ss",
         cleanDestination: false,
         showPassed: false,
         fileNameDateSuffix: false,

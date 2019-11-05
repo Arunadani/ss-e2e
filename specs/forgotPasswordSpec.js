@@ -27,6 +27,7 @@ describe("Forgot Password", function() {
     checkForgotPassword("unreg@gmail.com", "error");
     /*Its failing due to  UI issue*/
   });
+  browser.navigate().back();
 });
 
 function checkForgotPassword(email, status) {

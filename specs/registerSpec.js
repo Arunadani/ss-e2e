@@ -1,26 +1,29 @@
 ("use strict");
 const ssHelper = require("../helper/ssHelper");
 var XL = require("../helper/excelHelper");
-const eleReg = ssHelper.ele.registration;
-const data = ssHelper.data;
-browser.ignoreSynchronization = true;
-describe("When user register with: ", function() {
-  beforeAll(() => {
-    browser.get(ssHelper.ele.baseUrl);
-    browser.sleep(3000);
-  });
 
-  xit("Correct details", function() {
-    registerMe(data);
+let loginEle = ssHelper.ele.login;
+let loginData = ssHelper.data;
+
+const eleReg = ssHelper.ele.registration;
+
+browser.ignoreSynchronization = true;
+beforeAll(() => {
+  browser.get(ssHelper.ele.baseUrl);
+  browser.sleep(3000);
+});
+xdescribe("Registration: ", function() {
+  it("Register with Correct details", function() {
+    registerMe(loginData);
     expect($(eleReg.regSuccess).length()).toBe(4);
     //Check toast success
   });
-  xit("existing email", function() {
-    registerMe(data);
+  it("Register again with existing email", function() {
+    registerMe(loginData);
     //Check toast error
   });
 
-  it("excel data", function() {
+  it("Register multible user from excel ", function() {
     //expect($(eleReg.regSuccess).length()).toBe(4);
     var sendData = XL.readExcelData("Register", ssHelper.ele.excelFilePath);
     sendData.forEach(function(data) {
@@ -33,6 +36,23 @@ describe("When user register with: ", function() {
     });
   });
 });
+describe("Register Negative Test Cases", function() {
+  it("Register with Missing filed", function() {
+    ssHelper.getStart();
+    element(By.buttonText("Register")).click();
+    let list = $$(".card-body .form-group");
+    list.count().then(function(size) {
+    
+      console.log("Random" + getRandomInt(size));
+    });
+  });
+  xit("Register with wrong data", function() {});
+});
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 let registerMe = user => {
   $(eleReg.btnRegister).click();
