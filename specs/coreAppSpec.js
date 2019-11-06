@@ -9,7 +9,7 @@ let loginData = ssHelper.data;
 let core = ssHelper.ele.coreApp;
 let dashBD = ssHelper.ele.dashBd;
 
-describe("After login: ", function() {
+xdescribe("After login: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(3000);
@@ -33,21 +33,17 @@ describe("After login: ", function() {
   });
 
   it("Generate Report", function() {
-    generateReport("2019-02-11", "2019-03-11");
-    expect(ssHelper.toastCheck("success")).toBe(true);
+    generateReport("2019-02-11", "2019-03-11", "success");
   });
   it("Generate Report with Wrong Date Format", function() {
-    generateReport("02-11-2018", "03-12-2019");
-    expect(element(By.css(".toast-message")).getText()).toContain(
-      "Please select the From/To date"
-    );
+    generateReport("02-11-2018", "03-12-2019", "error");
   });
   xit("Report file downloaded or not", function() {});
   it("Click on Dashboard", function() {
     browser.sleep(3000);
     checkDashBoardIcon(dashBD.googleIcon);
   });
-  it("Check Create Notes & Notes field", function() {
+  xit("Check Create Notes & Notes field", function() {
     expect(element(By.css(core.createNotes)).getText()).toContain(
       "Create Notes"
     );
@@ -63,12 +59,13 @@ describe("After login: ", function() {
   });
 });
 
-function generateReport(from, to) {
+function generateReport(from, to, status) {
   browser.sleep(5000);
   expect(element(By.css(core.leftReport)).getText()).toContain("Report");
   element(By.css(core.fromCalender)).sendKeys(from);
   element(By.css(core.toCalender)).sendKeys(to);
   element(By.buttonText("Generate")).click();
+  expect(ssHelper.toastCheck(status)).toBe(true);
   browser.sleep(2000);
 }
 

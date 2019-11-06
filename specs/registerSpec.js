@@ -5,7 +5,7 @@ var XL = require("../helper/excelHelper");
 let loginEle = ssHelper.ele.login;
 let loginData = ssHelper.data;
 
-const eleReg = ssHelper.ele.registration;
+let eleReg = ssHelper.ele.registration;
 
 browser.ignoreSynchronization = true;
 beforeAll(() => {
@@ -40,15 +40,58 @@ describe("Register Negative Test Cases", function() {
   it("Register with Missing filed", function() {
     ssHelper.getStart();
     element(By.buttonText("Register")).click();
-    let list = $$(".card-body .form-group");
-    list.count().then(function(size) {
-    
-      console.log("Random" + getRandomInt(size));
-    });
+    let randomNum = getRandomInt(loginData.regForm.length);
+    console.log("Random number" + randomNum);
+    for (let i = 0; i < loginData.regForm.length; i++) {
+      if (i == randomNum) {
+      } else {
+        $(eleReg[loginData.regForm[i]]).sendKeys(
+          loginData[loginData.regForm[i]]
+        );
+      }
+    }
+    selectDropDownGroup("Spa");
+    selectDropDownCountry("Singapore");
+    $(eleReg.checkTerms).click();
+    element(By.buttonText("Register")).click();
+    browser.sleep(1000);
+    expect(ssHelper.toastCheck("error")).toBe(true);
   });
-  xit("Register with wrong data", function() {});
 });
+function selectDropDownCountry(country) {
+  let dropDownArray = [
+    "Country",
+    "Australia",
+    "Singapore",
+    "Japan",
+    "United States"
+  ];
+  $(eleReg.selCountry).click();
+  for (let i = 0; i < 7; i++) {
+    if (country == dropDownArray[i]) {
+      element(By.cssContainingText("option", country)).click();
+    }
+  }
+}
 
+function selectDropDownGroup(type) {
+  let dropDownGroup = [
+    "Business",
+    "Restaurant",
+    "Automobiles",
+    "Flowers",
+    "Real Estate",
+    "Enterprise",
+    "Hotel",
+    "Spa"
+  ];
+  $(eleReg.selGroup).click();
+  for (let i = 0; i <= 7; i++) {
+    if (type == dropDownGroup[i]) {
+      element(By.cssContainingText("option", type)).click();
+    }
+  }
+}
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -66,8 +109,5 @@ let registerMe = user => {
   $(eleReg.selCountry).click();
   $(eleReg.selCountry + " " + eleReg.optCountry).click();
   $(eleReg.checkTerms).click();
-  // $(eleReg.btnRegister).click();
-  $(by.buttonText("Register"));
-
-  browser.sleep(5000);
+  element(By.buttonText("Register")).click();
 };

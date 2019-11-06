@@ -8,13 +8,15 @@ const ele = {
     countryCode: 'input[name="code"]',
     phone: 'input[name="mobile"]',
     regPwd: 'input[name="registerpassword"]',
+    pswd: 'input[name="registerpassword"]',
     selGroup: 'select[name="groupname"]',
-    optGroup: ' option[value="3: 3"]',
+    optGroup: 'option[value="3: 3"]',
     selCountry: 'select[name="countryname"]',
     optCountry: 'option[value="4: 4"]',
     checkTerms: 'input[name="terms"]',
     btnRegister: ".btn.selected.btn-block.rounded-0",
     regSuccess: ".pricing .card-pricing"
+    //regForm:".card-body .form-group"
   },
   /*login*/
   login: {
@@ -65,7 +67,7 @@ const ele = {
    //.toast-error, .toast-warning, .toast-success*/
   toastContainer: "#toast-container",
   /*Get started link*/
- btnGetStarted: "#navbar .nav-item a.btn",
+  btnGetStarted: "#navbar .nav-item a.btn",
   /*LOGO present*/
   logoPresent: ".navbar .navbar-brand img"
 };
