@@ -19,11 +19,15 @@ const ssHelper = {
   },
   getStart: function() {
     //browser.refresh();
+    expect(
+      element(By.css(ssHelper.ele.btnGetStarted)).isDisplayed()
+    ).toBeTruthy();
     element(By.css(ssHelper.ele.btnGetStarted)).click();
     // element(By.cssContainingText(".nav-item", " Get Started")).click();
     browser.sleep(2000);
   },
   signOut: function() {
+    expect(element(By.css(ssHelper.ele.signOut)).isDisplayed()).toBeTruthy();
     element(By.css(ssHelper.ele.signOut)).click();
   },
   toastCheck: type => {

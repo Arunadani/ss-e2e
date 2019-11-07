@@ -12,19 +12,21 @@ beforeAll(() => {
   browser.get(ssHelper.ele.baseUrl);
   browser.sleep(3000);
 });
-xdescribe("Registration: ", function() {
+
+describe("Registration: ", function() {
   it("Register with Correct details", function() {
+    ssHelper.getStart();
     registerMe(loginData);
-    expect($(eleReg.regSuccess).length()).toBe(4);
-    //Check toast success
+    browser.navigate().back();
   });
   it("Register again with existing email", function() {
+    ssHelper.getStart();
     registerMe(loginData);
-    //Check toast error
+    expect(ssHelper.toastCheck("error")).toBe(true);
+    browser.navigate().back();
   });
 
   it("Register multible user from excel ", function() {
-    //expect($(eleReg.regSuccess).length()).toBe(4);
     var sendData = XL.readExcelData("Register", ssHelper.ele.excelFilePath);
     sendData.forEach(function(data) {
       /* 1.check all the required data is present
@@ -36,9 +38,10 @@ xdescribe("Registration: ", function() {
     });
   });
 });
-describe("Register Negative Test Cases", function() {
+describe("Registration:Negative Test Cases", function() {
   it("Register with Missing filed", function() {
     ssHelper.getStart();
+    browser.sleep(3000);
     element(By.buttonText("Register")).click();
     let randomNum = getRandomInt(loginData.regForm.length);
     console.log("Random number" + randomNum);
@@ -98,16 +101,19 @@ function getRandomInt(max) {
 }
 
 let registerMe = user => {
-  $(eleReg.btnRegister).click();
+  browser.sleep(1000);
+  element(By.buttonText("Register")).click();
   $(eleReg.uname).sendKeys(user.uname);
   $(eleReg.email).sendKeys(user.email);
   $(eleReg.countryCode).sendKeys(user.countryCode);
   $(eleReg.phone).sendKeys(user.phone);
-  $(eleReg.regPwd).sendKeys(user.password);
-  $(eleReg.selGroup).click();
+  $(eleReg.pswd).sendKeys(user.pswd);
+  selectDropDownGroup(user.business);
+  selectDropDownCountry(user.country);
+  /* $(eleReg.selGroup).click();
   $(eleReg.selGroup + " " + eleReg.optGroup).click();
   $(eleReg.selCountry).click();
-  $(eleReg.selCountry + " " + eleReg.optCountry).click();
+  $(eleReg.selCountry + " " + eleReg.optCountry).click(); */
   $(eleReg.checkTerms).click();
   element(By.buttonText("Register")).click();
 };

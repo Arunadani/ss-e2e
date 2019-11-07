@@ -53,8 +53,10 @@ describe("Navigation Footer", function() {
     element(
       By.cssContainingText(".terms-policy a", "Terms and Conditions")
     ).click();
+    expect(element(By.css(".terms-heading")).isDisplayed()).toBeTruthy();
     browser.navigate().back();
     element(By.cssContainingText(".terms-policy a", "Privacy Policy")).click();
+    expect(element(By.css(".terms-heading")).isDisplayed()).toBeTruthy();
     browser.navigate().back();
 
     browser.sleep(5000);

@@ -10,7 +10,7 @@ xdescribe("Excel Read:", function() {
   var sendData = XL.readExcelData("Register", ssHelper.ele.excelFilePath);
 
   sendData.forEach(function(data) {
-    it("call Registerme funciton", function() {
+    it("call Register me funciton", function() {
       registerHelp.registerMe(data);
     });
   });

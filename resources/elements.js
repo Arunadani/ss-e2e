@@ -7,7 +7,6 @@ const ele = {
     email: "#registermemail",
     countryCode: 'input[name="code"]',
     phone: 'input[name="mobile"]',
-    regPwd: 'input[name="registerpassword"]',
     pswd: 'input[name="registerpassword"]',
     selGroup: 'select[name="groupname"]',
     optGroup: 'option[value="3: 3"]',
@@ -16,7 +15,6 @@ const ele = {
     checkTerms: 'input[name="terms"]',
     btnRegister: ".btn.selected.btn-block.rounded-0",
     regSuccess: ".pricing .card-pricing"
-    //regForm:".card-body .form-group"
   },
   /*login*/
   login: {

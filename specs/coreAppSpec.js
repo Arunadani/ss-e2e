@@ -8,8 +8,7 @@ let loginData = ssHelper.data;
 
 let core = ssHelper.ele.coreApp;
 let dashBD = ssHelper.ele.dashBd;
-
-xdescribe("After login: ", function() {
+describe("Application: ", function() {
   beforeAll(() => {
     browser.get(ssHelper.ele.baseUrl);
     browser.sleep(3000);
@@ -35,7 +34,7 @@ xdescribe("After login: ", function() {
   it("Generate Report", function() {
     generateReport("2019-02-11", "2019-03-11", "success");
   });
-  it("Generate Report with Wrong Date Format", function() {
+  it("Generate Report:with Wrong Date Format", function() {
     generateReport("02-11-2018", "03-12-2019", "error");
   });
   xit("Report file downloaded or not", function() {});
@@ -43,7 +42,7 @@ xdescribe("After login: ", function() {
     browser.sleep(3000);
     checkDashBoardIcon(dashBD.googleIcon);
   });
-  xit("Check Create Notes & Notes field", function() {
+  it("Check Create Notes & Notes field", function() {
     expect(element(By.css(core.createNotes)).getText()).toContain(
       "Create Notes"
     );
